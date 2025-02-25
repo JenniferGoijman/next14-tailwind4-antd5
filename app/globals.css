@@ -1,18 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -20,6 +12,10 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  .button-generic-styles {
+    @apply h-[34px] px-[10px] py-2 rounded-[10px] text-sm font-normal;
   }
 }
 
@@ -45,4 +41,55 @@
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
   }
+}
+
+/* ** ** ** */
+/* Button */
+/* ** ** ** */
+
+.ant-btn.primary {
+  @apply bg-green-500 hover:bg-green-700 text-white border border-gray-50;
+}
+.ant-btn.primary:disabled {
+  @apply bg-gray-400 border-gray-50;
+}
+
+.ant-btn.secondary {
+  @apply bg-white text-green-600 border border-gray-500 hover:border-blue-700;
+}
+
+.ant-btn.secondary:disabled {
+  @apply bg-gray-300 text-white;
+}
+
+.ant-btn.additional {
+  @apply text-blue-400 hover:text-gray-600 underline;
+}
+.ant-btn.additional:disabled {
+  @apply text-gray-400 underline;
+}
+.ant-btn.alert {
+  @apply bg-red-400 hover:bg-red-700 text-white border border-gray-50;
+}
+.ant-btn.alert:disabled {
+  @apply bg-gray-400;
+}
+
+/* ** ** ** */
+/* Checkbox */
+/* ** ** ** */
+
+.ant-checkbox-inner {
+  clip-path: circle(90%);
+  @apply bg-white border-gray-500;
+}
+
+.ant-checkbox-input:checked + .ant-checkbox-inner {
+  @apply bg-green-500;
+}
+
+.ant-checkbox-input:hover + .ant-checkbox-inner {
+  box-shadow: 0 0 0 10px #edf6fc;
+  clip-path: circle(90%);
+  @apply border-gray-600;
 }
